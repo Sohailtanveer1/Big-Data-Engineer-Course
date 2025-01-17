@@ -1,0 +1,18 @@
+-- command to create a compute in gcloud from command line
+gcloud dataproc clusters create cluster-c072 --enable-component-gateway --region us-central1 --master-machine-type n2-standard-4 --master-boot-disk-type pd-balanced --master-boot-disk-size 32 --num-workers 2 --worker-machine-type n2-standard-4 --worker-boot-disk-type pd-balanced --worker-boot-disk-size 32 --image-version 2.2-debian12 --optional-components JUPYTER --project circular-gist-447803-b4
+
+-- command to authenticate to gcloud from terminal
+gcloud auth login
+
+--command to set project in cmd for gcloud loging session
+gcloud config set project circular-gist-447803-b4
+
+-- command use to SSH from windows terminal to dataproc gcloud
+gcloud compute ssh --zone "us-central1-f" "cluster-bigdata-demo-m" --project "circular-gist-447803-b4"
+
+-- command to secure copy a file from local to remote
+gcloud compute scp path/to/local/file mdsoh@cluster-041a-m:path/to/destination
+gcloud compute scp C:\Users\mdsoh\Downloads\sales_data.csv sohailtanveerforjobs@cluster-041a-m:sales.csv
+
+-- command to send data to hdfs
+hadoop fs -put sales.csv /hadoop
